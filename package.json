@@ -1,0 +1,22 @@
+{
+  "name": "elasticsearch-query",
+  "version": "1.0.0",
+  "description": "elasticsearch-query generate queries for elasticsearch by simplify params",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/boubaks/elasticsearch-query"
+  },
+  "keywords": [
+    "elasticsearch"
+  ],
+  "author": "boubaks",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/boubaks/elasticsearch-query/issues"
+  },
+  "homepage": "https://github.com/boubaks/elasticsearch-query"
+}
