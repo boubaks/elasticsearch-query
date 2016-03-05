@@ -1,6 +1,6 @@
 {
   "name": "elasticsearch-query",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "elasticsearch-query generate queries for elasticsearch by simplify params",
   "main": "index.js",
   "scripts": {
