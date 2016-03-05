@@ -1,7 +1,7 @@
 var elsQuery = require(__dirname + '/index');
 var elsGeneratorQueries = new elsQuery();
 
-var type = 'product';
+var type = null;
 
 var query = {
 	'createdBy': 'kimchy',
@@ -24,22 +24,21 @@ var rangeQuery = {
 
 var orQuery = {
 	'|createdBy': 'kimchy',
-	'|createdBy': 'boubaks'
+	'|postedBy': 'boubaks'
 };
 
 var notQuery = {
 	'!createdBy': 'kimchy',
-	'!createdBy': 'boubaks'
+	'!postedBy': 'boubaks'
 }
 
-// I want the username aggregation and count between VERIFIED people where the field AGE exist and between 18-60 years old, not include kimchy & boubaks
+// I want the username aggregation and count between VERIFIED people where the field AGE exist and between 18-60 years old, not include kimchy
 var complexQuery = {
 	'verified': true,
 	'$exist': 'age',
 	'$lte': { 'age': 60 },
 	'$gte': { 'age': 18 },
 	'!username': 'kimchy',
-	'!username': 'boubaks',
 	'$facet': 'username',
 	'$count': true
 };
