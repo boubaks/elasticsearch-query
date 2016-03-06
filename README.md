@@ -5,6 +5,7 @@ elasticsearch-query easily generate complex elasticsearch queries
 ## Installation
 npm install elasticsearch-query
 
+
 ## Simple queries : mustQuery, orQuery, mustNotQuery
     
     var elsQuery = require('elasticsearch-query');
@@ -16,6 +17,15 @@ npm install elasticsearch-query
 	     'createdBy': 'kimchy'
     };
     
+    /*
+    ** method@generate(type, query, queryAggregations, match_type, callback);
+    **
+    **	type (string) type on your elasticsearch index (not necessary could be null)
+    ** 	query (object) that you want to transform
+    **	queryAggregations (object) elasticsearch query if you want an aggregation more specific
+    **	match_type (object) you can use {term: true}, or {match: true}, {match_phrase_prefix: true}, ... 
+    ** 	callback (function) return err & queryELS
+    */
     elsGeneratorQueries.generate(type, mustQuery, null, {term: true}, function(err, queryELS) {
     	console.log('mustQuery ->', JSON.stringify(queryELS));
     });
