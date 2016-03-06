@@ -13,6 +13,10 @@ var query = {
 	'$gte': { 'age': 30 }
 };
 
+var simpleQuerySameField = {
+	'createdBy': ['kimchy', 'boubaks']
+};
+
 var simpleQuery = {
 	'createdBy': 'kimchy'
 };
@@ -45,26 +49,40 @@ var complexQuery = {
 
 var emptyQuery = {};
 
-elsGeneratorQueries.generate(type, emptyQuery, null, {term: false}, function(err, queryELS) {
+elsGeneratorQueries.generate();
+
+elsGeneratorQueries.generate(type, 'string', null, {term: true}, function(err, queryELS) {
+	console.log('string error ->', JSON.stringify(queryELS));
+});
+
+elsGeneratorQueries.generate(type, ['array'], null, {term: true}, function(err, queryELS) {
+	console.log('array error ->', JSON.stringify(queryELS));
+});
+
+elsGeneratorQueries.generate(type, emptyQuery, null, {term: true}, function(err, queryELS) {
 	console.log('emptyQuery ->', JSON.stringify(queryELS));
 });
 
-elsGeneratorQueries.generate(type, simpleQuery, null, {term: false}, function(err, queryELS) {
+elsGeneratorQueries.generate(type, simpleQuery, null, {term: true}, function(err, queryELS) {
 	console.log('simpleQuery ->', JSON.stringify(queryELS));
 });
 
-elsGeneratorQueries.generate(type, rangeQuery, null, {term: false}, function(err, queryELS) {
+elsGeneratorQueries.generate(type, simpleQuerySameField, null, {term: true}, function(err, queryELS) {
+	console.log('simpleQuerySameField ->', JSON.stringify(queryELS));
+});
+
+elsGeneratorQueries.generate(type, rangeQuery, null, {term: true}, function(err, queryELS) {
 	console.log('rangeQuery ->', JSON.stringify(queryELS));
 });
 
-elsGeneratorQueries.generate(type, orQuery, null, {term: false}, function(err, queryELS) {
+elsGeneratorQueries.generate(type, orQuery, null, {term: true}, function(err, queryELS) {
 	console.log('orQuery ->', JSON.stringify(queryELS));
 });
 
-elsGeneratorQueries.generate(type, notQuery, null, {term: false}, function(err, queryELS) {
+elsGeneratorQueries.generate(type, notQuery, null, {term: true}, function(err, queryELS) {
 	console.log('notQuery ->', JSON.stringify(queryELS));
 });
 
-elsGeneratorQueries.generate(type, complexQuery, null, {term: false}, function(err, queryELS) {
+elsGeneratorQueries.generate(type, complexQuery, null, {match: true}, function(err, queryELS) {
 	console.log('complexQuery ->', JSON.stringify(queryELS));
 });
