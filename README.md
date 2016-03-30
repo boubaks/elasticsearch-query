@@ -120,7 +120,7 @@ npm install elasticsearch-query
       	'$count': true
       };
       
-      elsGeneratorQueries.generate(type, complexQuery, null, {term: false}, function(err, queryELS) {
+      elsGeneratorQueries.generate(type, complexQuery, null, {term: true}, function(err, queryELS) {
       	console.log('complexQuery ->', JSON.stringify(queryELS));
       });
       
