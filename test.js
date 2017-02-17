@@ -42,6 +42,7 @@ var complexQuery = {
 	'$exist': 'age',
 	'$lte': { 'age': 60 },
 	'$gte': { 'age': 18 },
+	'$sort': { 'timestamp': -1 },
 	'!username': 'kimchy',
 	'$facet': 'username',
 	'$count': true
