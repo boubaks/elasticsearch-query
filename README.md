@@ -1,6 +1,6 @@
 # elasticsearch-query
 
-elasticsearch-query easily generate complex elasticsearch queries
+elasticsearch-query easily generate complex elasticsearch queries (last version for ELS 5.X)
 
 ## Installation
 npm install elasticsearch-query
@@ -33,20 +33,17 @@ npm install elasticsearch-query
     ==> queryELS
       {
         "query": {
-          "filtered":{
-            "filter":{
-              "bool":{
-                "must":[
-                  {
-                    "term": {
-                      "createdBy":"kimchy"
-                    }
-                  }
-                  ],
-                  "must_not":[],
-                  "should":[]
+          "bool":{
+            "must":[
+              {
+                "term":{
+                  "createdBy":"kimchy"
+                }
               }
-            }
+            ],
+            "must_not":[],
+            "should":[],
+            "filter":[]
           }
         }
       }
@@ -84,27 +81,23 @@ npm install elasticsearch-query
       });
       ==> queryELS
       {  
-        "query":{  
-          "filtered":{  
-            "filter":{  
-              "bool":{  
-                "must":[  
-                  {  
-                    "range":{  
-                      "age":{  
-                        "lte":60,
-                        "gte":18
-                      }
-                    }
+        "query":{
+          "bool":{  
+            "must":[  
+              {  
+                "range":{  
+                  "age":{  
+                    "lte":60,
+                    "gte":18
                   }
-                 ],
-                 "must_not":[],
-                 "should":[]
+                }
               }
-            }
+            ],
+            "must_not":[],
+            "should":[],
+            "filter": []
           }
         }
-      }
       <==
       
 ##  Complexes queries ($facet, $exist, $not_exist)
@@ -127,40 +120,37 @@ npm install elasticsearch-query
       ==> queryELS
       {  
         "query":{  
-          "filtered":{  
-              "filter":{  
-                "bool":{  
-                  "must":[  
-                    {  
-                      "term":{  
-                        "verified":true
-                      }
-                    },
-                    {  
-                      "range":{  
-                        "age":{  
-                            "lte":60,
-                            "gte":18
-                        }
-                      }
-                    },
-                    {  
-                      "exists":{  
-                        "field":"age"
-                      }
-                    }
-                  ],
-                  "must_not":[  
-                    {  
-                      "term":{  
-                        "username":"boubaks"
-                      }
-                    }
-                  ],
-                  "should":[]
+          "bool":{  
+            "must":[  
+              {  
+                "term":{  
+                  "verified":true
+                }
+              },
+              {  
+                "range":{  
+                  "age":{  
+                      "lte":60,
+                      "gte":18
+                  }
+                }
+              },
+              {  
+                "exists":{  
+                  "field":"age"
                 }
               }
-            }
+            ],
+            "must_not":[  
+              {  
+                "term":{  
+                  "username":"boubaks"
+                }
+              }
+            ],
+            "should":[],
+            "filter": []
+          }
         },
         "aggregations":{  
           "aggs":{

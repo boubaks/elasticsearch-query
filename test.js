@@ -48,42 +48,67 @@ var complexQuery = {
 	'$count': true
 };
 
+var multipleRange = {
+	'$lte': { 'age': 60, 'date': 100060 },
+	'$gte': { 'age': 18,'date': 200000 }
+};
+
 var emptyQuery = {};
 
 elsGeneratorQueries.generate();
 
 elsGeneratorQueries.generate(type, 'string', null, {term: true}, function(err, queryELS) {
-	console.log('string error ->', JSON.stringify(queryELS));
+	console.log('string error -> ', JSON.stringify(queryELS));
+	// console.log("curl -XGET 'localhost:9200/_search?pretty' -H 'Content-Type: application/json' -d'" + JSON.stringify(queryELS) + "'");
 });
 
 elsGeneratorQueries.generate(type, ['array'], null, {term: true}, function(err, queryELS) {
 	console.log('array error ->', JSON.stringify(queryELS));
+	// console.log("curl -XGET 'localhost:9200/_search?pretty' -H 'Content-Type: application/json' -d'" + JSON.stringify(queryELS) + "'");
 });
 
 elsGeneratorQueries.generate(type, emptyQuery, null, {term: true}, function(err, queryELS) {
 	console.log('emptyQuery ->', JSON.stringify(queryELS));
+	// console.log("curl -XGET 'localhost:9200/_search?pretty' -H 'Content-Type: application/json' -d'" + JSON.stringify(queryELS) + "'");
 });
 
 elsGeneratorQueries.generate(type, simpleQuery, null, {term: true}, function(err, queryELS) {
-	console.log('simpleQuery ->', JSON.stringify(queryELS));
+	//console.log('simpleQuery ->', JSON.stringify(queryELS));
+	console.log("curl -XGET 'localhost:9200/_search?pretty' -H 'Content-Type: application/json' -d'" + JSON.stringify(queryELS) + "'");
+});
+
+elsGeneratorQueries.generate(type, simpleQuery, null, {match: true}, function(err, queryELS) {
+	console.log('simpleQuery (match) ->', JSON.stringify(queryELS));
+	// console.log("curl -XGET 'localhost:9200/_search?pretty' -H 'Content-Type: application/json' -d'" + JSON.stringify(queryELS) + "'");
 });
 
 elsGeneratorQueries.generate(type, simpleQuerySameField, null, {term: true}, function(err, queryELS) {
 	console.log('simpleQuerySameField ->', JSON.stringify(queryELS));
+	// console.log("curl -XGET 'localhost:9200/_search?pretty' -H 'Content-Type: application/json' -d'" + JSON.stringify(queryELS) + "'");
 });
 
 elsGeneratorQueries.generate(type, rangeQuery, null, {term: true}, function(err, queryELS) {
 	console.log('rangeQuery ->', JSON.stringify(queryELS));
+	// console.log("curl -XGET 'localhost:9200/_search?pretty' -H 'Content-Type: application/json' -d'" + JSON.stringify(queryELS) + "'");
 });
 
 elsGeneratorQueries.generate(type, orQuery, null, {term: true}, function(err, queryELS) {
-	console.log('orQuery ->', JSON.stringify(queryELS));
+	console.log('orQuery -> ', JSON.stringify(queryELS));
+	// console.log("curl -XGET 'localhost:9200/_search?pretty' -H 'Content-Type: application/json' -d'" + JSON.stringify(queryELS) + "'");
 });
 
 elsGeneratorQueries.generate(type, notQuery, null, {term: true}, function(err, queryELS) {
 	console.log('notQuery ->', JSON.stringify(queryELS));
+	// console.log("curl -XGET 'localhost:9200/_search?pretty' -H 'Content-Type: application/json' -d'" + JSON.stringify(queryELS) + "'");
+});
+
+elsGeneratorQueries.generate(type, multipleRange, null, {match: true}, function(err, queryELS) {
+	console.log('multipleRange ->', JSON.stringify(queryELS));
+	// console.log("curl -XGET 'localhost:9200/_search?pretty' -H 'Content-Type: application/json' -d'" + JSON.stringify(queryELS) + "'");
 });
 
 elsGeneratorQueries.generate(type, complexQuery, null, {match: true}, function(err, queryELS) {
 	console.log('complexQuery ->', JSON.stringify(queryELS));
+	// console.log("curl -XGET 'localhost:9200/_search?pretty' -H 'Content-Type: application/json' -d'" + JSON.stringify(queryELS) + "'");
 });
+
