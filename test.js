@@ -72,6 +72,8 @@ elsGeneratorQueries.generate(type, emptyQuery, null, {term: true}, function(err,
 	// console.log("curl -XGET 'localhost:9200/_search?pretty' -H 'Content-Type: application/json' -d'" + JSON.stringify(queryELS) + "'");
 });
 
+
+console.log('return: simpleQuery ->', JSON.stringify(elsGeneratorQueries.generate(type, simpleQuery, null, {term: true})))
 elsGeneratorQueries.generate(type, simpleQuery, null, {term: true}, function(err, queryELS) {
 	//console.log('simpleQuery ->', JSON.stringify(queryELS));
 	console.log("curl -XGET 'localhost:9200/_search?pretty' -H 'Content-Type: application/json' -d'" + JSON.stringify(queryELS) + "'");
@@ -82,6 +84,7 @@ elsGeneratorQueries.generate(type, simpleQuery, null, {match: true}, function(er
 	// console.log("curl -XGET 'localhost:9200/_search?pretty' -H 'Content-Type: application/json' -d'" + JSON.stringify(queryELS) + "'");
 });
 
+console.log('return: simpleQuerySameField (with query_string) ->', JSON.stringify(elsGeneratorQueries.generate(type, simpleQuerySameField, null, {query_string: true})))
 elsGeneratorQueries.generate(type, simpleQuerySameField, null, {term: true}, function(err, queryELS) {
 	console.log('simpleQuerySameField ->', JSON.stringify(queryELS));
 	// console.log("curl -XGET 'localhost:9200/_search?pretty' -H 'Content-Type: application/json' -d'" + JSON.stringify(queryELS) + "'");
